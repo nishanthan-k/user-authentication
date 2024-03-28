@@ -4,23 +4,29 @@ import CustomInput from '../utils/CustomInput';
 import { signUpFormValidation } from '../utils/validationSchema';
 
 const SignUp = () => {
-  const handleSubmit = (e, values) => {
-    console.log(e);
-    console.log("Form values:", values);
-    // Here you can make an API call to submit the form data
-    // setSubmitting(false)
+  const handleSubmit = async (values) => {
+    try {
+      const res = await axios.post("url", values, {
+        headers: {
+          "content-type": "application/json"
+        }
+      })
+    } catch (error) {
+      // error logic
+
+      // toast error, alert msg, ...
+    }
   };
-  
+
   return (
     <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', marginTop: '100px' }}>
       <Formik
         initialValues={{
-          email: "n@gmail.com",
-          password: "NNNNn1",
-          confirmPassword: "NNNNn1"
+          email: "",
+          password: "",
+          confirmPassword: "",
         }}
-        validateOnChange={false} // Update: Disable validation on change
-        validateOnBlur={true} // Update: Enable validation on blur
+        validateOnBlur={true}
         validate={signUpFormValidation}
         onSubmit={handleSubmit}
       >

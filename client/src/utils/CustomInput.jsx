@@ -20,7 +20,7 @@ const CustomInput = ({ label, ...props }) => {
         style={{ height: "30px", paddingLeft: "10px" }}
       />
 
-      {meta.touched  && (<span style={{color: 'red'}}>{meta.error}</span>)}
+      {meta.touched  && (<span style={{color: 'red', marginTop: "10px"}}>{meta.error}</span>)}
     </div>
   )
 }

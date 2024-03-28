@@ -4,7 +4,7 @@ import { confirmPasswordSchema, emailSchema, passwordSchema, userNameSchema } fr
 export const signUpFormValidation = async (values) => {
   try {
     const schema = Yup.object().shape({
-      username: userNameSchema,
+      // username: userNameSchema,
       email: emailSchema,
       password: passwordSchema,
       confirmPassword: confirmPasswordSchema('password'),
@@ -18,9 +18,6 @@ export const signUpFormValidation = async (values) => {
       error.inner.forEach((err) => {
         errors[err.path] = err.message;
       });
-    } else {
-      // Handle other types of errors
-      console.error(error); // Log the error for debugging
     }
     return errors;
   }
